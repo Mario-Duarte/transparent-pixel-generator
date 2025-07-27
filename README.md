@@ -1,6 +1,10 @@
 # Transparent Pixel Generator
 
-A lightweight, dependency-free library to generate transparent pixel images on the client-side, ideal for creating dynamic backgrounds, placeholders, or tracking pixels without server requests.
+A lightweight, __dependency-free__ library to generate base64 transparent pixel PNGs on the client-side, ideal for creating dynamic backgrounds and placeholders without server requests.
+
+## Why would you need this?
+
+This function is useful to create semi-transparent backgrounds as the CSS opacity attribute applies to the whole element and child elements, while this pixel can be used as a background image with specific opacity.
 
 ## Installation
 
@@ -39,19 +43,3 @@ Generates a transparent pixel image.
 **Returns**
 
 A base64 encoded PNG image.
-
-### `hexToRgb(hex)`
-
-Converts a hex color to an RGB object.
-
-**Parameters**
-
-- `hex` (string): The hex color to convert.
-
-**Returns**
-
-An object with `r`, `g`, and `b` properties.
-
-## License
-
-MIT
