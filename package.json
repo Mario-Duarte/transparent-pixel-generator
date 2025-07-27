@@ -1,12 +1,27 @@
 {
   "name": "transparent-pixel-generator",
-  "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "author": {
+    "name": "Mario Duarte"
+  },
+  "description": "A lightweight, dependency-free library to generate transparent pixel PNGs on the client-side, ideal for creating dynamic backgrounds and placeholders without server requests.",
+  "license": "MIT",
   "type": "module",
+  "main": "./dist/transparent-pixel-generator.umd.cjs",
+  "module": "./dist/transparent-pixel-generator.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/transparent-pixel-generator.js",
+      "require": "./dist/transparent-pixel-generator.umd.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview",
+    "build": "tsc --outDir lib && vite build --outDir lib",
+    "preview": "vite preview --outDir lib",
     "test": "vitest run",
     "test:watch": "vitest --watch"
   },
@@ -14,6 +29,19 @@
     "jsdom": "^26.1.0",
     "typescript": "~5.8.3",
     "vite": "^7.0.4",
+    "vite-plugin-dts": "^4.5.4",
     "vitest": "^3.2.4"
-  }
+  },
+  "keywords": [
+    "transparent",
+    "pixel",
+    "generator",
+    "canvas",
+    "image",
+    "data-url",
+    "base64",
+    "png",
+    "client-side",
+    "lightweight"
+  ]
 }
