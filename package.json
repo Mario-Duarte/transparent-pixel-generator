@@ -5,7 +5,11 @@
     "name": "Mario Duarte"
   },
   "description": "A lightweight, dependency-free library to generate transparent pixel PNGs on the client-side, ideal for creating dynamic backgrounds and placeholders without server requests.",
-  "license": "MIT",
+  "license": "GPL",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mario-Duarte/transparent-pixel-generator"
+  },
   "type": "module",
   "main": "./dist/transparent-pixel-generator.umd.cjs",
   "module": "./dist/transparent-pixel-generator.js",
