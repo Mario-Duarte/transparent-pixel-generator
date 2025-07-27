@@ -1,5 +1,10 @@
 # Transparent Pixel Generator
 
+[![transparent-pixel-generator](https://nodei.co/npm/transparent-pixel-generator.png)](https://www.npmjs.com/package/transparent-pixel-generator)
+
+[![npm version](https://badge.fury.io/js/transparent-pixel-generator.svg)](https://www.npmjs.com/package/transparent-pixel-generator) 
+[![https://img.shields.io/github/issues-raw/mario-duarte/transparent-pixel-generator](https://img.shields.io/github/issues-raw/mario-duarte/transparent-pixel-generator)](https://www.npmjs.com/package/transparent-pixel-generator)
+
 A lightweight, __dependency-free__ library to generate base64 transparent pixel PNGs on the client-side, ideal for creating dynamic backgrounds and placeholders without server requests.
 
 ## Why would you need this?
