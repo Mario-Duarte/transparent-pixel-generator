@@ -2,6 +2,7 @@
 import { ref, watch } from 'vue';
 import { transparentPixelGenerator } from 'transparent-pixel-generator';
 import hexToRGB from '../helpers/hexToRGB';
+import rgbToHex from '../helpers/rgbToHex';
 
 const r = ref<number>(0)
 const g = ref<number>(0)
@@ -19,13 +20,6 @@ const pixel = ref<string>(transparentPixelGenerator({
     color: hexColor.value,
 }))
 
-watch([hexColor], () => {
-    const { red, green, blue } = hexToRGB(hexColor.value);
-    r.value = red;
-    g.value = green;
-    b.value = blue;
-})
-
 watch([pWidth, pHeight, opacity, hexColor], () => {
     pixel.value = transparentPixelGenerator({
         width: pWidth.value,
@@ -34,6 +28,18 @@ watch([pWidth, pHeight, opacity, hexColor], () => {
         color: hexColor.value,
     });
 }, { immediate: true });
+
+const updateHex = () => {
+    hexColor.value = rgbToHex(r.value, g.value, b.value);
+}
+
+const updateRgb = () => {
+    const { red, green, blue } = hexToRGB(hexColor.value);
+    r.value = red;
+    g.value = green;
+    b.value = blue;
+}
+
 </script>
 
 <template>
@@ -60,19 +66,19 @@ watch([pWidth, pHeight, opacity, hexColor], () => {
 
                 <div class="flex flex-col gap-2">
                     <label class="block -mb-2 text-gray-900" for="red" aria-label="Red">Red:</label>
-                    <input v-model="r" type="text" id="red" placeholder="0-255"
+                    <input v-model="r" type="text" id="red" placeholder="0-255" v-on:keyup="updateHex()"
                         class="w-full p-2 bg-neutral-50 border border-gray-200 rounded-lg" />
                     <label class="block -mb-2 text-gray-900" for="green" aria-label="Green">Green:</label>
-                    <input v-model="g" type="text" id="green" placeholder="0-255"
+                    <input v-model="g" type="text" id="green" placeholder="0-255" v-on:keyup="updateHex()"
                         class="w-full p-2 bg-neutral-50 border border-gray-200 rounded-lg" />
                     <label class="block -mb-2 text-gray-900" for="blue" aria-label="Blue">Blue:</label>
-                    <input v-model="b" type="text" id="blue" placeholder="0-255"
+                    <input v-model="b" type="text" id="blue" placeholder="0-255" v-on:keyup="updateHex()"
                         class="w-full p-2 bg-neutral-50 border border-gray-200 rounded-lg" />
                 </div>
 
                 <div class="flex flex-col gap-2">
                     <label class="block -mb-2 text-gray-900" for="hex" aria-label="Hex color">Hex color:</label>
-                    <input v-model="hexColor" type="text" id="hex" placeholder="#000000"
+                    <input v-model="hexColor" type="text" id="hex" placeholder="#000000" v-on:keyup="updateRgb()"
                         class="w-full p-2 bg-neutral-50 border border-gray-200 rounded-lg" />
                     <label class="block -mb-2 text-gray-900" for="opacity" aria-label="Opacity">Opacity:</label>
                     <input v-model="opacity" type="text" id="opacity" placeholder="0-1"

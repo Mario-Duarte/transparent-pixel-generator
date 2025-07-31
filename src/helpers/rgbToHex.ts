@@ -1,8 +1,3 @@
-export default function rgbToHex(r: number, g: number, b: number): string {
-  const toHex = (value: number) => {
-    const hex = value.toString(16);
-    return hex.length === 1 ? "0" + hex : hex;
-  };
-
-  return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
+export default function rgbToHex(r: number, g: number, b: number): `#${string}` {
+    return `# ${(1 << 24 | r << 16 | g << 8 | b).toString(16).slice(1)}`;
 }
