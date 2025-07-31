@@ -9,7 +9,7 @@ export default defineConfig({
       entry: resolve(__dirname, "src/index.ts"),
       name: "transparentPixelGenerator",
       fileName: "transparent-pixel-generator",
-      formats: ["umd"],
+      formats: ["es", "umd"],
     },
     rollupOptions: {
       external: [],
