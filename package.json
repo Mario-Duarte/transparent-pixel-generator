@@ -1,5 +1,5 @@
 {
-  "name": "transparent-pixel-generator",
+  "name": "transparent-pixel-generator-demo",
   "version": "1.0.0",
   "author": {
     "name": "Mario Duarte"
@@ -11,41 +11,26 @@
     "url": "https://github.com/Mario-Duarte/transparent-pixel-generator"
   },
   "type": "module",
-  "main": "./dist/transparent-pixel-generator.umd.cjs",
-  "module": "./dist/transparent-pixel-generator.js",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "import": "./dist/transparent-pixel-generator.js",
-      "require": "./dist/transparent-pixel-generator.umd.cjs"
-    }
-  },
-  "files": [
-    "dist"
-  ],
   "scripts": {
-    "build": "tsc --outDir lib && vite build --outDir lib",
-    "preview": "vite preview --outDir lib",
-    "test": "vitest run",
-    "test:watch": "vitest --watch"
+    "dev": "vite",
+    "build": "vue-tsc -b && vite build",
+    "preview": "vite preview",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@tailwindcss/postcss": "^4.1.11",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.11",
+    "transparent-pixel-generator": "^1.0.0",
+    "vue": "^3.5.17"
   },
   "devDependencies": {
-    "jsdom": "^26.1.0",
+    "@vitejs/plugin-vue": "^6.0.0",
+    "@vue/tsconfig": "^0.7.0",
+    "autoprefixer": "^10.4.21",
     "typescript": "~5.8.3",
     "vite": "^7.0.4",
-    "vite-plugin-dts": "^4.5.4",
-    "vitest": "^3.2.4"
-  },
-  "keywords": [
-    "transparent",
-    "pixel",
-    "generator",
-    "canvas",
-    "image",
-    "data-url",
-    "base64",
-    "png",
-    "client-side",
-    "lightweight"
-  ]
+    "vitest": "^3.2.4",
+    "vue-tsc": "^2.2.12"
+  }
 }
