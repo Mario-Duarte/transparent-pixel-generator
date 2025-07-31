@@ -1,6 +1,6 @@
 {
   "name": "transparent-pixel-generator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": {
     "name": "Mario Duarte"
   },
@@ -11,17 +11,17 @@
     "url": "https://github.com/Mario-Duarte/transparent-pixel-generator"
   },
   "type": "module",
-  "main": "./dist/transparent-pixel-generator.umd.cjs",
-  "module": "./dist/transparent-pixel-generator.js",
-  "types": "./dist/index.d.ts",
+  "main": "./lib/transparent-pixel-generator.umd.cjs",
+  "module": "./lib/transparent-pixel-generator.js",
+  "types": "./lib/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/transparent-pixel-generator.js",
-      "require": "./dist/transparent-pixel-generator.umd.cjs"
+      "import": "./lib/transparent-pixel-generator.js",
+      "require": "./lib/transparent-pixel-generator.umd.cjs"
     }
   },
   "files": [
-    "dist"
+    "lib"
   ],
   "scripts": {
     "build": "tsc --outDir lib && vite build --outDir lib",
