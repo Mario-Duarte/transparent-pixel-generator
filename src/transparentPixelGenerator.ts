@@ -11,7 +11,7 @@ interface transparentPixelGeneratorProps {
  * Generates a Base64 PNG data URL representing a pixel of the specified size, color, and alpha transparency.
  * The pixel can be customized with width, height, color (in hex or RGB format), and alpha transparency.
  * If no parameters are provided, it defaults to a 1x1 transparent pixel.
- * 
+ *
  * usage example:
  * ```ts
  * const pixelUrl = transparentPixelGenerator({ width: 10, height: 10, color: "#ff0000", alpha: 0.5 });
@@ -33,9 +33,12 @@ export default function transparentPixelGenerator({
   height = 1,
   color = "#ffffff",
   alpha = 0,
-}: transparentPixelGeneratorProps):string {
+}: transparentPixelGeneratorProps): string {
   let { r, g, b } = { r: 255, g: 255, b: 255 };
-  const safeAlpha = typeof alpha === "number" && !isNaN(alpha) ? Math.max(0, Math.min(1, alpha)) : 0;
+  const safeAlpha =
+    typeof alpha === "number" && !isNaN(alpha)
+      ? Math.max(0, Math.min(1, alpha))
+      : alpha;
 
   if (typeof color === "string" && color.startsWith("#")) {
     const converted = hexToRgb(color as `#${string}`);
