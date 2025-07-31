@@ -27,10 +27,22 @@ watch([pWidth, pHeight, opacity, hexColor], () => {
         alpha: opacity.value,
         color: hexColor.value,
     });
+    console.log({width: pWidth.value,
+        height: pHeight.value,
+        alpha: opacity.value,
+        color: hexColor.value});
+    
 }, { immediate: true });
 
 const updateHex = () => {
-    hexColor.value = rgbToHex(r.value, g.value, b.value);
+    const red = Number(r.value) || 0;
+    const green = Number(g.value) || 0;
+    const blue = Number(b.value) || 0;
+    const clampedRed = Math.max(0, Math.min(255, red));
+    const clampedGreen = Math.max(0, Math.min(255, green));
+    const clampedBlue = Math.max(0, Math.min(255, blue));
+    hexColor.value = rgbToHex(clampedRed, clampedGreen, clampedBlue);
+    console.log(`Updated hex color: ${hexColor.value}`);
 }
 
 const updateRgb = () => {
@@ -66,33 +78,33 @@ const updateRgb = () => {
 
                 <div class="flex flex-col gap-2">
                     <label class="block -mb-2 text-gray-900" for="red" aria-label="Red">Red:</label>
-                    <input v-model="r" type="text" id="red" placeholder="0-255" v-on:keyup="updateHex()"
-                        class="w-full p-2 bg-neutral-50 border border-gray-200 rounded-lg" />
+                    <input v-model.number="r" type="number" min="0" max="255" id="red" placeholder="0-255"
+                        v-on:input="updateHex()" class="w-full p-2 bg-neutral-50 border border-gray-200 rounded-lg" />
                     <label class="block -mb-2 text-gray-900" for="green" aria-label="Green">Green:</label>
-                    <input v-model="g" type="text" id="green" placeholder="0-255" v-on:keyup="updateHex()"
-                        class="w-full p-2 bg-neutral-50 border border-gray-200 rounded-lg" />
+                    <input v-model.number="g" type="number" min="0" max="255" id="green" placeholder="0-255"
+                        v-on:input="updateHex()" class="w-full p-2 bg-neutral-50 border border-gray-200 rounded-lg" />
                     <label class="block -mb-2 text-gray-900" for="blue" aria-label="Blue">Blue:</label>
-                    <input v-model="b" type="text" id="blue" placeholder="0-255" v-on:keyup="updateHex()"
-                        class="w-full p-2 bg-neutral-50 border border-gray-200 rounded-lg" />
+                    <input v-model.number="b" type="number" min="0" max="255" id="blue" placeholder="0-255"
+                        v-on:input="updateHex()" class="w-full p-2 bg-neutral-50 border border-gray-200 rounded-lg" />
                 </div>
 
                 <div class="flex flex-col gap-2">
                     <label class="block -mb-2 text-gray-900" for="hex" aria-label="Hex color">Hex color:</label>
-                    <input v-model="hexColor" type="text" id="hex" placeholder="#000000" v-on:keyup="updateRgb()"
+                    <input v-model="hexColor" type="text" id="hex" placeholder="#000000" v-on:input="updateRgb()"
                         class="w-full p-2 bg-neutral-50 border border-gray-200 rounded-lg" />
                     <label class="block -mb-2 text-gray-900" for="opacity" aria-label="Opacity">Opacity:</label>
-                    <input v-model="opacity" type="text" id="opacity" placeholder="0-1"
+                    <input v-model.number="opacity" type="number" min="0" max="1" step="0.01" id="opacity" placeholder="0-1"
                         class="w-full p-2 bg-neutral-50 border border-gray-200 rounded-lg" />
 
                     <div class="grid grid-cols-2 gap-6">
                         <div class="flex flex-col gap-2">
                             <label class="block -mb-2 text-gray-900" for="width" aria-label="Width">Width:</label>
-                            <input v-model="pWidth" type="text" id="width" placeholder="1px"
+                            <input v-model.number="pWidth" type="number" min="1" id="width" placeholder="1px"
                                 class="w-full p-2 bg-neutral-50 border border-gray-200 rounded-lg" />
                         </div>
                         <div class="flex flex-col gap-2">
                             <label class="block -mb-2 text-gray-900" for="height" aria-label="Height">Height:</label>
-                            <input v-model="pHeight" type="text" id="height" placeholder="1px"
+                            <input v-model.number="pHeight" type="number" min="1" id="height" placeholder="1px"
                                 class="w-full p-2 bg-neutral-50 border border-gray-200 rounded-lg" />
                         </div>
                     </div>
@@ -100,19 +112,16 @@ const updateRgb = () => {
 
                 <div class="flex flex-col gap-2">
                     <label class="block text-gray-900" aria-label="Preview">Preview:</label>
-                    <img
-                        :src="pixel"
-                        alt="Generated pixel preview"
-                        id="preview"
+                    <img :src="pixel" alt="Generated pixel preview" id="preview"
                         class="w-full h-auto flex-1 border border-gray-200 rounded-lg overflow-hidden object-cover max-h-48"
-                        style="background: repeating-conic-gradient(#fff 0% 25%, #f9f9f9 0% 50%) 50% / 24px 24px;"
-                    />
+                        style="background: repeating-conic-gradient(#fff 0% 25%, #f9f9f9 0% 50%) 50% / 24px 24px;" />
                 </div>
 
             </div>
 
             <div>
-                <label class="block text-gray-900" for="base64" aria-label="Base64 Encoded Pixel">Base64 Encoded Pixel:</label>
+                <label class="block text-gray-900" for="base64" aria-label="Base64 Encoded Pixel">Base64 Encoded
+                    Pixel:</label>
                 <textarea v-model="pixel" id="base64"
                     class="w-full h-32 p-4 bg-neutral-100 border border-gray-200 rounded-lg resize-none"
                     readonly></textarea>

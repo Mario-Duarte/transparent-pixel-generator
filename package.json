@@ -21,7 +21,7 @@
     "@tailwindcss/postcss": "^4.1.11",
     "postcss": "^8.5.6",
     "tailwindcss": "^4.1.11",
-    "transparent-pixel-generator": "^1.0.2",
+    "transparent-pixel-generator": "^1.1.0",
     "vue": "^3.5.17"
   },
   "devDependencies": {
