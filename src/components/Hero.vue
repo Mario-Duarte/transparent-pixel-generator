@@ -1,17 +1,17 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import transparentPixelGenerator from 'transparent-pixel-generator';
+import { transparentPixelGenerator } from 'transparent-pixel-generator';
 
-const r = ref(0)
-const g = ref(0)
-const b = ref(0)
-const hexColor = ref('#000000')
-const opacity = ref(0)
-const pWidth = ref(1)
-const pHeight = ref(1)
+const r = ref<number>(0)
+const g = ref<number>(0)
+const b = ref<number>(0)
+const hexColor = ref<`#${string}`>('#000000')
+const opacity = ref<number>(0)
+const pWidth = ref<number>(1)
+const pHeight = ref<number>(1)
 
 const pixel = transparentPixelGenerator({
-    with: pWidth.value,
+    width: pWidth.value,
     height: pHeight.value,
     alpha: opacity.value,
     color: hexColor.value,
