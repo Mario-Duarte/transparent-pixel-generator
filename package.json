@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.11",
+    "oh-vue-icons": "^1.0.0-rc3",
     "postcss": "^8.5.6",
     "tailwindcss": "^4.1.11",
     "transparent-pixel-generator": "^1.1.0",
