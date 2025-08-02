@@ -1,6 +1,6 @@
 {
   "name": "transparent-pixel-generator",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "author": {
     "name": "Mario Duarte"
   },
@@ -16,8 +16,14 @@
   "types": "./lib/index.d.ts",
   "exports": {
     ".": {
-      "import": "./lib/transparent-pixel-generator.js",
-      "require": "./lib/transparent-pixel-generator.umd.cjs"
+      "import": {
+        "types": "./lib/index.d.ts",
+        "default": "./lib/transparent-pixel-generator.js"
+      },
+      "require": {
+        "types": "./lib/index.d.ts",
+        "default": "./lib/transparent-pixel-generator.umd.cjs"
+      }
     }
   },
   "files": [
