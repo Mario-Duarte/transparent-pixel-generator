@@ -60,7 +60,7 @@ const updateRgb = () => {
         <form class="w-full max-w-5xl">
             <a href="https://www.npmjs.com/package/transparent-pixel-generator" target="_blank"
                 rel="noopener noreferrer" class="flex items-center gap-4 mb-8">
-                <img src="../../ico.svg" width="86" class="logo" alt="App logo" />
+                <img src="/ico.svg" width="86" class="logo" alt="App logo" />
                 <h1
                     class="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-sky-600 to-emerald-500">
                     Transparent Base64<br />image Generator</h1>
