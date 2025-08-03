@@ -2,8 +2,8 @@
 import { defineProps, ref, watch, nextTick } from 'vue';
 import { motion } from 'motion-v';
 
-const { pixel, class: customClass } = defineProps<{
-    pixel: string;
+const { code, class: customClass } = defineProps<{
+    code: string;
     class?: string;
 }>();
 
@@ -42,7 +42,7 @@ const copyToClipboard = async (text: string) => {
 <template>
     <div :class="[customClass ? customClass : 'relative', 'w-auto']">
         <button class="p-1 bg-sky-300 text-white rounded-lg hover:bg-sky-600 transition-colors"
-            @click="copyToClipboard(pixel)" @mouseenter="showTooltip = true" @mouseleave="showTooltip = false"
+            @click="copyToClipboard(code)" @mouseenter="showTooltip = true" @mouseleave="showTooltip = false"
             type="button">
             <v-icon v-if="copied" name="co-check" aria-hidden="true" scale="1.25"></v-icon>
             <v-icon v-else name="co-copy" aria-hidden="true" scale="1.25"></v-icon>

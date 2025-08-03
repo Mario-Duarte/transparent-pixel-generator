@@ -5,6 +5,10 @@ import CopyToClipBoard from './CopyToClipBoard.vue';
 import hexToRGB from '../helpers/hexToRGB';
 import rgbToHex from '../helpers/rgbToHex';
 
+const { onCodeChangeHandler } = defineProps<{
+    onCodeChangeHandler?: (newCode: string) => void;
+}>();
+
 const r = ref<number>(0)
 const g = ref<number>(0)
 const b = ref<number>(0)
@@ -22,17 +26,15 @@ const pixel = ref<string>(transparentPixelGenerator({
 }))
 
 watch([pWidth, pHeight, opacity, hexColor], () => {
-    pixel.value = transparentPixelGenerator({
+    const code = transparentPixelGenerator({
         width: pWidth.value,
         height: pHeight.value,
         alpha: opacity.value,
         color: hexColor.value,
     });
-    console.log({width: pWidth.value,
-        height: pHeight.value,
-        alpha: opacity.value,
-        color: hexColor.value});
-    
+    pixel.value = code;
+    onCodeChangeHandler?.(code);
+
 }, { immediate: true });
 
 const updateHex = () => {
@@ -56,7 +58,7 @@ const updateRgb = () => {
 </script>
 
 <template>
-    <main class="h-auto md:h-[80dvh] w-full bg-[#FAF7F3] flex flex-col items-center justify-center p-8">
+    <section class="h-auto md:h-[80dvh] w-full bg-[#FAF7F3] flex flex-col items-center justify-center p-8">
 
         <form class="w-full max-w-5xl">
             <a href="https://www.npmjs.com/package/transparent-pixel-generator" target="_blank"
@@ -68,11 +70,11 @@ const updateRgb = () => {
             </a>
 
             <p class="text-lg text-gray-900 mb-4">
-                Demo page of a lightweight, dependency-free <a
+                Demo page of a lightweight, dependency-free and framework agnostic <a
                     href="https://www.npmjs.com/package/transparent-pixel-generator" target="_blank"
                     rel="noopener noreferrer" class="text-sky-600 hover:underline">library</a> to generate base64
-                transparent pixel PNGs on the client-side, ideal for creating dynamic backgrounds and placeholders
-                without server requests.
+                transparent pixel PNGs on the client-side, ideal for creating dynamic backgrounds, placeholders
+                or tracking pixels without server requests.
             </p>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-16 mb-8">
@@ -125,13 +127,13 @@ const updateRgb = () => {
                     Pixel:</label>
                 <div class="relative w-full">
                     <textarea v-model="pixel" id="base64"
-                    class="w-full h-32 p-4 bg-neutral-100 border border-gray-200 rounded-lg resize-none"
+                    class="w-full h-28 p-4 bg-white border border-gray-200 rounded-lg resize-none"
                     readonly></textarea>
-                    <CopyToClipBoard :class="'absolute bottom-3 right-2'" :pixel="pixel" />
+                    <CopyToClipBoard :class="'absolute bottom-3 right-2'" :code="pixel" />
                 </div>
             </div>
 
         </form>
 
-    </main>
+    </section>
 </template>
