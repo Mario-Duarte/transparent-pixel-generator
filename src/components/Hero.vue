@@ -123,10 +123,12 @@ const updateRgb = () => {
             <div>
                 <label class="block text-gray-900" for="base64" aria-label="Base64 Encoded Pixel">Base64 Encoded
                     Pixel:</label>
-                <textarea v-model="pixel" id="base64"
+                <div class="relative w-full">
+                    <textarea v-model="pixel" id="base64"
                     class="w-full h-32 p-4 bg-neutral-100 border border-gray-200 rounded-lg resize-none"
                     readonly></textarea>
-                <CopyToClipBoard :pixel="pixel" />
+                    <CopyToClipBoard :class="'absolute bottom-3 right-2'" :pixel="pixel" />
+                </div>
             </div>
 
         </form>
