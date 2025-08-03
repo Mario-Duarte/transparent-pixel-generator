@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.11",
+    "@wdns/vue-code-block": "^2.3.5",
     "motion-v": "^1.6.1",
     "oh-vue-icons": "^1.0.0-rc3",
     "postcss": "^8.5.6",
