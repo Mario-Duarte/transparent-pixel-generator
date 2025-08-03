@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue';
 import { transparentPixelGenerator } from 'transparent-pixel-generator';
+import CopyToClipBoard from './CopyToClipBoard.vue';
 import hexToRGB from '../helpers/hexToRGB';
 import rgbToHex from '../helpers/rgbToHex';
 
@@ -125,6 +126,7 @@ const updateRgb = () => {
                 <textarea v-model="pixel" id="base64"
                     class="w-full h-32 p-4 bg-neutral-100 border border-gray-200 rounded-lg resize-none"
                     readonly></textarea>
+                <CopyToClipBoard :pixel="pixel" />
             </div>
 
         </form>
