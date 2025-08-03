@@ -2,6 +2,7 @@
 import { ref, watch } from 'vue';
 import Hero from './components/Hero.vue'
 import CopyToClipBoard from './components/CopyToClipBoard.vue';
+import Footer from './components/Footer.vue';
 
 const code = ref<string>('');
 const cssCode = ref<string>('background-image: url(transparent-pixel-generator);');
@@ -94,5 +95,6 @@ const usageCode = `
       </div>
     </div>
   </main>
+  <Footer />
 </template>
 
