@@ -32,10 +32,10 @@ const usageCode = `
 </script>
 
 <template>
-  <main class="flex flex-col items-center justify-center">
+  <main class="w-full flex flex-col items-center justify-center">
     <Hero :onCodeChangeHandler="onCodeChangeHandler" />
-    <div class="flex flex-col items-center justify-center h-auto w-full p-8">
-      <div class="max-w-5xl flex flex-col items-start justify-start">
+    <div class="h-auto w-full flex flex-col items-center justify-center p-8">
+      <div class="w-full max-w-5xl flex flex-col items-start justify-start">
 
         <h3 class="text-lg font-semibold text-gray-900 mb-2 mt-6">Embed the .png into your code</h3>
 
@@ -62,15 +62,15 @@ const usageCode = `
         <p class="text-md text-gray-900 mt-4">Installation</p>
 
         <div class="w-full grid grid-cols-[1fr_auto] grid-rows-1 relative border border-gray-200 rounded-lg pt-2 pl-2 pr-12">
-          <VCodeBlock class="z-0 relative" :code="'npm install transparent-pixel-generator'" prismjs
+          <VCodeBlock class="z-0 relative overflow-x-scroll" :code="'npm install transparent-pixel-generator'" prismjs
           :copyButton="false" />
           <CopyToClipBoard :class="'absolute bottom-3 right-2'" :code="'npm install transparent-pixel-generator'" />
         </div>
 
         <p class="text-md text-gray-900 mt-4">Usage</p>
 
-        <div class="w-full grid grid-cols-[1fr_auto] grid-rows-1 relative border border-gray-200 rounded-lg pt-2 pl-2 pr-12">
-          <VCodeBlock class="z-0 relative" :code="usageCode" :lang="'javascript'" prismjs :copyButton="false" />
+        <div class="w-full grid grid-cols-[1fr_auto] grid-rows-1 relative border border-gray-200 rounded-lg p-2">
+          <VCodeBlock class="z-0 relative overflow-x-scroll" :code="usageCode" :lang="'javascript'" prismjs :copyButton="false" />
         </div>
 
         <h3 class="text-lg font-semibold text-gray-900 mb-2 mt-12">API</h3>
