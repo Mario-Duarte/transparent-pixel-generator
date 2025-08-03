@@ -3,10 +3,10 @@ import "./style.css";
 import App from "./App.vue";
 import { VCodeBlock } from '@wdns/vue-code-block';
 import { OhVueIcon, addIcons } from "oh-vue-icons";
-import { CoCopy, CoCheck } from "oh-vue-icons/icons";
+import { CoCopy, CoCheck, CoBuyMeACoffee } from "oh-vue-icons/icons";
 
 const app = createApp(App);
 app.component("v-icon", OhVueIcon);
 app.component('VCodeBlock', VCodeBlock);
-addIcons(CoCopy, CoCheck);
+addIcons(CoCopy, CoCheck, CoBuyMeACoffee);
 app.mount("#app");

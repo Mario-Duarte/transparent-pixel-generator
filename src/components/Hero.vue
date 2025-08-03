@@ -96,8 +96,8 @@ const updateRgb = () => {
                     <input v-model="hexColor" type="text" id="hex" placeholder="#000000" v-on:input="updateRgb()"
                         class="w-full p-2 bg-neutral-50 border border-gray-200 rounded-lg" />
                     <label class="block -mb-2 text-gray-900" for="opacity" aria-label="Opacity">Opacity:</label>
-                    <input v-model.number="opacity" type="number" min="0" max="1" step="0.01" id="opacity" placeholder="0-1"
-                        class="w-full p-2 bg-neutral-50 border border-gray-200 rounded-lg" />
+                    <input v-model.number="opacity" type="number" min="0" max="1" step="0.01" id="opacity"
+                        placeholder="0-1" class="w-full p-2 bg-neutral-50 border border-gray-200 rounded-lg" />
 
                     <div class="grid grid-cols-2 gap-6">
                         <div class="flex flex-col gap-2">
@@ -127,10 +127,17 @@ const updateRgb = () => {
                     Pixel:</label>
                 <div class="relative w-full">
                     <textarea v-model="pixel" id="base64"
-                    class="w-full h-28 p-4 bg-white border border-gray-200 rounded-lg resize-none"
-                    readonly></textarea>
+                        class="w-full h-28 p-4 bg-white border border-gray-200 rounded-lg resize-none"
+                        readonly></textarea>
                     <CopyToClipBoard :class="'absolute bottom-3 right-2'" :code="pixel" />
                 </div>
+            </div>
+
+            <div>
+                <p class="text-lg text-gray-900 mt-4">What to support my work?</p>
+                <p class="mt-4"><a class="bg-[#FFDD00] text-gray-900 font-medium py-2 px-4 hover:bg-amber-300 rounded-lg shadow-xs transition-background duration-250 linear"
+                        href="https://buymeacoffee.com/marioduarte" target="_blank" rel="noopener noreferrer"><v-icon
+                            name="co-buy-me-a-coffee" /> Buy me a coffee</a></p>
             </div>
 
         </form>
